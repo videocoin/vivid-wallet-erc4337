@@ -34,12 +34,22 @@ README.md in each folder(repo) is updated to describe the changes required for V
 ## Email bound Vivid-Wallet
 Unique mapping from email-id to Vivid-Wallet is achieved using hash of the email-id be embedded in initialization code of vivid-wallet. The deployment script creates a uniqe wallet address for the email-id.
 
+Block diagram showing Vivid-Wallet creation for an email-id.
+
 ![Email To Vivid-Wallet](documents/email-wallet-mapping.drawio.svg)
 
 Future update may include credentials provided by an ID-Provider to authorize the operation.
 
+## Gas fees sponsoring (Future Enhancement using Paymaster)
+
+Anyone who sends an Ethereum transaction needs to have Ether to pay for its gas fees. This forces new users to purchase Ether (which can be a daunting task) before they can start using a dapp. This is a major hurdle in user onboarding.
+
+The Paymaster contract and offchain component of ERC-4337 ecosystem can enable enable gas fee sponsoring so that users can perfrom blockchain transactions without having Ethereum (or native token of the blockchain). 
+
 ## Testing
 This section describes the flow for generation of a Vivivd Wallet bound to an Email(Hash) using ERC-4337.   
+
+
 Test Accounts hardcoded in the deployment scripts.
 ```
 # Admin/Authenticator
@@ -98,6 +108,9 @@ Test transfer form vivid-wallet
 cd vivid-wallet-erc4337/vivid-wallet-cli
 yarn ts-node scripts/vividAccount/index.ts transfer --to "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" --amount 0.1
 ```
+Note: 
+If deploying contracts on Videocoin dev or prod networks set the environment variable VID_SIGNER_KEY with the privatekey used for deploying ERC-4337 Entrypoint and Vivid-Wallet Factory contracts.
+
 
 ## References
 1. Account Abstraction Using Alt Mempool  
@@ -122,4 +135,12 @@ https://github.com/stackup-wallet/stackup-bundler
 https://github.com/wighawag/hardhat-deploy#4-deterministicdeployment-ability-to-specify-a-deployment-factory
 11. Deterministic Deployment Proxy   
 https://github.com/Arachnid/deterministic-deployment-proxy
+12. Sending gasless transactions  
+https://docs.openzeppelin.com/learn/sending-gasless-transactions
+13. ERC-1613: Gas stations network  
+https://eips.ethereum.org/EIPS/eip-1613
+14. ERC-1077: Gas relay for contract calls  
+https://eips.ethereum.org/EIPS/eip-1077
+15. You Could Have Invented Account Abstraction: Part 1  
+https://www.alchemy.com/blog/account-abstraction
 
