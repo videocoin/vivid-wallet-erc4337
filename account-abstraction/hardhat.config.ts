@@ -53,6 +53,15 @@ const config: HardhatUserConfig = {
     dev: { url: 'http://localhost:8545' },
     // github action starts localgeth service, for gas calculations
     localgeth: { url: 'http://localgeth:8545' },
+    videocoin_dev: { 
+	    url: 'https://dev.videocoin.network/rpc',
+	    accounts: [process.env.VID_SIGNER_KEY]
+    },
+    videocoin_prod: { 
+	    url: 'https://videocoin.network/rpc',
+	    accounts: [process.env.VID_SIGNER_KEY]
+    },
+
     goerli: getNetwork('goerli'),
     sepolia: getNetwork('sepolia'),
     proxy: getNetwork1('http://localhost:8545')

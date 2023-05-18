@@ -12,7 +12,7 @@ const deployEntryPoint: DeployFunction = async function (hre: HardhatRuntimeEnvi
     'EntryPoint', {
       from,
       args: [],
-      gasLimit: 6e6,
+      gasLimit: 8000000,
       deterministicDeployment: true
     })
   console.log('==entrypoint addr=', ret.address)
