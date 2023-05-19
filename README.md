@@ -32,13 +32,30 @@ This implementation is present in the folder vivid-wallet-cli.
 README.md in each folder(repo) is updated to describe the changes required for Vivid-Wallet.
 
 ## Email bound Vivid-Wallet
-Unique mapping from email-id to Vivid-Wallet is achieved using hash of the email-id be embedded in initialization code of vivid-wallet. The deployment script creates a uniqe wallet address for the email-id.
+Unique mapping from email-id to Vivid-Wallet is achieved using hash of the email-id embedded in initialization code of vivid-wallet. This embedding results in to a conterfactual account that is uniquely mapped email(hash). The account can be used to transfer any assets even before the wallet contract is deployed. 
+
+The Wallet contract can be created in one of the following methods:
+
+* The deployment script that directly calls Vivid-Wallet factory contract.
+* Using Entrypoint contract's getSenderAddress method.
 
 Block diagram showing Vivid-Wallet creation for an email-id.
 
 ![Email To Vivid-Wallet](documents/email-wallet-mapping.drawio.svg)
 
-Future update may include credentials provided by an ID-Provider to authorize the operation.
+### Wallet Contract code
+The wallet contract code may contain any logic that can help manage the assets that it holds. These operations are initiated by the holder of the wallet and are executed in the secure environment provided by EntryPoint contract after validated by the Wallet Contract.  
+
+Wallet Operations can include any transaction and can use an authentication mechanism. This aspect of ERC4337 facilitates execution of blockchain transactions without a need for private keys.
+
+Current implementation of the Wallet code still requires the operations to be signed by an Admin(Custodian)
+
+Future update may include web2 authentication mechanisms such as Single-Sign-On/Auth0. There is a good amount of research by various companies in this direction.
+
+### Usage of the Wallet for Vivid-NFTs (Vivid-Pro and Shopify)
+The wallet which is uniquely mapped to the email-ID can be used, for example, to assign the token ownership in Vivivd NFT contracts. The Admin(Custodian) can perform the operations on behalf of the user (authenticated through email). We can avoid maintaining user's private keys(as there are no private keys).
+
+Alternately, the Custodian creates a key-pair, hold the private-key in a secure DB and publish public-key/address the vivid wallet. This approach helps migrate the current custodial wallet DBs from Vivid-Pro and Shopify. The advantage is that we will have email-address mappings on the chain and support web3 based queries.
 
 ## Gas fees sponsoring (Future Enhancement using Paymaster)
 

@@ -1,0 +1,21 @@
+{
+  "name": "vivid-wallet-js",
+  "version": "1.0.0",
+  "description": "vivid wallet sample code",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.2.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "ethers": "^5.7.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "ts-node": "^10.9.1"
+  }
+}
