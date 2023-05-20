@@ -1,7 +1,7 @@
 {
   "emailId": "abc@xyz.com",
   "bundlerUrl": "http://localhost:4337",
-  "rpcUrl": "http://localhost:8545",
+  "rpcUrl": "https://dev.videocoin.network/rpc",
   "signingKey": "0bcdff379067e2cd2841574bf888297b9cd1e86e518161a758eefa1477615496",
   "entryPoint": "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789",
   "vividAccountFactory": "0x80b02bc9A18955FfC6C0E8380480f34E5819e105",

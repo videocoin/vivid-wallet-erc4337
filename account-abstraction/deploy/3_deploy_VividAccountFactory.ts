@@ -10,7 +10,7 @@ const deployVividAccountFactory: DeployFunction = async function (hre: HardhatRu
   const ret = await hre.deployments.deploy(
     'VividAccountFactory', {
       from,
-      args: ["0xcbd0D5480AAE8091683e8a811fC97Da84E01575b", entrypoint.address],
+      args: [from, entrypoint.address],
       gasLimit: 6e6,
       deterministicDeployment: true
     })
